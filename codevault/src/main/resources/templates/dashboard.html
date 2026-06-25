@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<bo xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="navbar">
+    <div>CodeVault</div>
+    <div>
+        <a href="/dashboard" class="active">Dashboard</a>
+        <a href="/snippets">Snippets</a>
+        <button onclick="toggleTheme()">🌙</button>
+    </div>
+</div>
+<div class="container">
+<h2>Dashboard</h2>
+
+<!-- Stats -->
+<div class="stats">
+    
+    <div class="card">
+        <h3>Total Snippets</h3>
+        <p th:text="${total}"></p>
+    </div>
+    <div class="card">
+        <h3>Favorites</h3>
+        <p th:text="${favorites}"></p>
+    </div>
+</div><br>
+
+<!-- Actions -->
+<a href="/snippets/add"><button>Add Snippet</button></a>
+<a href="/snippets"><button>View Snippets</button></a>
+<br><br>
+
+<!-- Recent -->
+<h3>Recent Snippets</h3>
+<div th:each="snippet : ${recent}" class="card">
+    <h4 th:text="${snippet.title}"></h4>
+    <p th:text="${snippet.language}"></p>
+</div>
+</div>
+
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/script.js"></script>
+</body>
+</html>
